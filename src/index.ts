@@ -16,7 +16,6 @@ type ReviewForPullRequestPayload = {
   repo: string
   pull_number: number
   event: ReviewOutcome
-  review_id: number
   body?: string
 }
 
@@ -36,7 +35,6 @@ async function run() {
       ...repository,
       pull_number: pr_number,
       event: outcome,
-      review_id: Date.now()
     }
 
     if (comment) {
@@ -47,7 +45,7 @@ async function run() {
     core.info(`${JSON.stringify(payload, null, 2)}`);
     core.endGroup();
 
-    const result = await octokit.rest.pulls.submitReview(payload);
+    const result = await octokit.rest.pulls.createReview(payload);
     if (result.status === 200) {
       core.info(`Pull Request review submitted successfully`);
     } else {

@@ -47,14 +47,14 @@ function run() {
         const repository = getRepository(), pr_number = parseInt(getRequiredInput('pr_number')), token = getRequiredInput('token'), outcome = getOutcome(), comment = core.getInput('comment') || undefined;
         try {
             const octokit = github.getOctokit(token);
-            const payload = Object.assign(Object.assign({}, repository), { pull_number: pr_number, event: outcome, review_id: Date.now() });
+            const payload = Object.assign(Object.assign({}, repository), { pull_number: pr_number, event: outcome });
             if (comment) {
                 payload.body = comment;
             }
             core.startGroup('Pull Request Review');
             core.info(`${JSON.stringify(payload, null, 2)}`);
             core.endGroup();
-            const result = yield octokit.rest.pulls.submitReview(payload);
+            const result = yield octokit.rest.pulls.createReview(payload);
             if (result.status === 200) {
                 core.info(`Pull Request review submitted successfully`);
             }
