@@ -12,6 +12,10 @@ inputs:
     default: ${{ github.repository }}
     required: true
 
+  pr_number:
+    description: The number for the PR that the review is for
+    required: true
+
   outcome:
     description: The outcome of the PR review one of approve, comment or request_changes
     required: true
