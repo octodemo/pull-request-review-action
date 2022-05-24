@@ -1,0 +1,27 @@
+{
+  "name": "pull-request-review-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "npm ci && tsc && npx @vercel/ncc@0.33.4 build --source-map lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/octodemo/pull-request-review-action.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/octodemo/pull-request-review-action/issues"
+  },
+  "homepage": "https://github.com/octodemo/pull-request-review-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.8.2",
+    "@actions/github": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.35",
+    "typescript": "^4.6.4"
+  }
+}

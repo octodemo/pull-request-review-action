@@ -1,0 +1,32 @@
+name: Pull Request Review
+description: Apply a Pull Request Review from GitHub Actions workflows
+author: octodemo
+
+branding:
+  icon: 'thumbs-up'
+  color: 'green'
+
+inputs:
+  repository:
+    description: The repository upon which the PR review is to be performed
+    default: ${{ github.repository }}
+    required: true
+
+  outcome:
+    description: The outcome of the PR review one of approve, comment or request_changes
+    required: true
+
+  comment:
+    description: The comment for the provided result that applies to the entire review, some results may require this value to be provided.
+    required: false
+
+  # pullRequestComments:
+
+  token:
+    description: The GitHub token to use to submit the Pull Request Review
+    default: ${{ github.token }}
+    required: true
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
