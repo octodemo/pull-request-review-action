@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "npm ci && tsc && npx @vercel/ncc@0.33.4 build --source-map lib/index.js"
+    "build": "npm i && tsc && npx @vercel/ncc@0.33.4 build --source-map lib/index.js"
   },
   "repository": {
     "type": "git",
